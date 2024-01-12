@@ -17,11 +17,7 @@ ssh_tunnel.start()
 # This function handles the loading of movie data into the database.
 def load_movies_data():
     # Read the CSV
-    movies_df = pd.read_csv('notebooks/DB_models/DB_genres.csv')
-
-    # # Add a 'year' column if not present in CSV
-    # if 'year' not in movies_df.columns:
-    #     movies_df['year'] = None
+    movies_df = pd.read_csv('notebooks/DB_models/DB_movie_tag.csv')
 
     # Connect to MYSQL database
     # pymysql: Specifies the MySQL driver to be used for the connection.
@@ -31,7 +27,7 @@ def load_movies_data():
 
     # Insert data into the 'movies' table
     # to_sql method to insert the data from the Pandas DataFrame into the 'movies' table in the MySQL database.
-    movies_df.to_sql('movie_genre', con=engine, if_exists='append', index=False)
+    movies_df.to_sql('movie_tag', con=engine, if_exists='append', index=False)
 
     ssh_tunnel.close()
 
