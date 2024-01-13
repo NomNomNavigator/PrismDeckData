@@ -165,4 +165,4 @@ notebooks/raw_data
 notebooks/ML_data
 
 # ignore config
-config.py
+config1.py
