@@ -14,20 +14,22 @@ ssh_tunnel = SSHTunnelForwarder(
 ssh_tunnel.start()
 
 
-# This function handles the loading of movie data into the database.
+# This function handles the loading of data into the database.
 def load_movies_data():
     # Read the CSV
-    movies_df = pd.read_csv('notebooks/DB_models/DB_movie_tag.csv')
+    df = pd.read_csv('notebooks/DB_models/DB_user.csv')
 
     # Connect to MYSQL database
     # pymysql: Specifies the MySQL driver to be used for the connection.
     # pymysql is a Python library that provides a MySQL driver for Python.
     engine = create_engine(
-        f"mysql+pymysql://{db_username}:{db_password}@localhost:{ssh_tunnel.local_bind_port}/{db_name}")
+      f"mysql+pymysql://{db_username}:{db_password}@localhost:{ssh_tunnel.local_bind_port}/{db_name}")
+
+    # engine = create_engine(XOpath)
 
     # Insert data into the 'movies' table
     # to_sql method to insert the data from the Pandas DataFrame into the 'movies' table in the MySQL database.
-    movies_df.to_sql('movie_tag', con=engine, if_exists='append', index=False)
+    df.to_sql('user', con=engine, if_exists='append', index=False)
 
     ssh_tunnel.close()
 
