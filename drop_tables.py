@@ -1,17 +1,14 @@
 import pandas as pd
 from sqlalchemy import create_engine, MetaData
 from sshtunnel import SSHTunnelForwarder
-from config import *
+from config1 import *
 
 
-
+# Function to drop tables from the xo machine, so we can recreate them correctly
 def drop_tables():
 
 
     # Connect to MYSQL database
-    # pymysql: Specifies the MySQL driver to be used for the connection.
-    # pymysql is a Python library that provides a MySQL driver for Python.
-
     engine = create_engine(XOpath)
 
     # Create a MetaData object
