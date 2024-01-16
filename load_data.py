@@ -17,7 +17,7 @@ from config1 import *
 # This function handles the loading of data into the database.
 def load_movies_data():
     # Read the CSV
-    df = pd.read_csv('notebooks/DB_models/DB_genres.csv')
+    df = pd.read_csv('notebooks/DB_models/DB_movie_tag1.csv')
 
     # Connect to MYSQL database on linux box
     # engine = create_engine(
@@ -28,7 +28,7 @@ def load_movies_data():
         f"mysql+pymysql://{db_username}:{db_password}@localhost/{db_name}")
 
     # Insert data into table
-    df.to_sql('genre', con=engine, if_exists='append', index=False)
+    df.to_sql('movie_tag', con=engine, if_exists='append', index=False)
 
     #ssh_tunnel.close()
 
